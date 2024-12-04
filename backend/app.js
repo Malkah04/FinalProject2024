@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt= require('bcrypt');
 const User=require('./models/user.model')
+const Product=require('./models/Product.model')
 
 const mongouri ="mongodb://localhost:27017/finalproject"
 
@@ -49,6 +50,96 @@ app.post('/login', async (req, res) => {
 
 
 
+app.get('/products', async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({message: error.message})
+}
+});
+
+app.post('/addproduct',  async (req, res) => {
+
+  try{
+      
+      let productParam = req.body;
+     
+      
+      if (await Product.findOne({ id: productParam.id })) {
+          res.send( 'productId "' + productParam.id + '" is already exist');
+          return;
+      }
+
+      const product = new Product(productParam);
+
+
+        await product.save();
+        res.send("product added successfully ")
+
+  }catch(err)
+  {
+      res.status(500).send('server error: '+ err);
+  }
+  
+});
+
+
+
+
+
+app.delete('/deleteproduct', async (req, res) => { 
+  
+  try {
+
+      let productParam = req.body;
+      if (!productParam.id) {
+        return res.status(400).json({ message: 'Product ID is required' });
+      }
+
+      const deletedProduct = await Product.findByIdAndDelete(productParam.id);
+      
+      if(!deletedProduct){
+          return res.status(404).json(`{message: cannot find any product with productId ${productParam.id}}`)
+      }
+      res.status(200).json({message :"product deleted succussfully",deletedProduct});
+      
+      
+  } catch (error) {
+      res.status(500).json({message: error.message})
+  }
+});
+
+
+app.post('/editproduct', async (req,res)=>{
+  try{
+      
+      let productParam =req.body
+      if (!productParam.id) {
+        return res.status(400).json({ message: 'Product ID is required' });
+      }
+
+
+      const editedProduct = await Product.findById(productParam.id);
+      
+      if(!editedProduct){
+        return res.status(404).json(`{message: cannot find any product with productId ${productParam.id}}`)
+      }
+      
+      if(productParam.productPrice!==undefined){
+          editedProduct.productPrice = productParam.productPrice
+      }
+
+      if(productParam.productQuantity!==undefined){
+        editedProduct.productQuantity = productParam.productQuantity
+      }
+      await editedProduct.save();
+      res.send("user updateded successfully ")
+      
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
 
 
 mongoose.set("strictQuery", false)
