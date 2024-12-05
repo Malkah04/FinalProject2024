@@ -35,35 +35,39 @@ export default function Login() {
     <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-group">
             
-            <label htmlFor="username" className="form-label">Username:</label>
+            {/* <label htmlFor="username" className="form-label">Username:</label> */}
         
             <input
                 type="text"
                 id="username"
+                placeholder="username"
                 name="username"
                 className="form-input"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
             />
-           
+           <i class="fa-solid fa-user"></i>
         </div>
         <div className="form-group">
-            <label htmlFor="password" className="form-label">Password:</label>
+            {/* <label htmlFor="password" className="form-label">Password:</label> */}
             <input
                 type="password"
                 id="password"
+                placeholder="password"
                 name="password"
                 className="form-input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
+
         </div>
+        <Link to="/forgot-password" className="forgot-password-link">Forgot Password</Link>
+
         <button type="submit" className="login-button">Login</button>
         <div className="login-links">
-            <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
-            <a href="/register" className="register-link">Don't have an account?</a>
+           <p className="register-link-p">Don't have an account? <a href="/register" className="register-link">Register</a></p>
         </div>
     </form>
 </div>
