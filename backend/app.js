@@ -27,12 +27,12 @@ app.post('/register', async (req, res) => {
          }
          if(password.trim()==='')res.json('password cannot be empty')
          if(password.length <8)res.json('password must be at least 8 characters')
-          if(password.length<20)res.json('password cannot exceed 20 characters')
+          if(password.length>20)res.json('password cannot exceed 20 characters')
          const salt=await bcrypt.genSalt(10);
          password=await bcrypt.hash(password,salt)
 
-        const user = new User(...req.body,password);
-        await user.save();
+         const user = new User({ first, second, email, password });
+         await user.save();
         res.status(200).json("user added successfully ")
       }
       catch(err){
@@ -323,8 +323,16 @@ mongoose
 .connect('mongodb://localhost:27017/finalproject')
 .then(() => {
     console.log('connected to MongoDB')
-    //listen on specific port 
-    app.listen(7000, () => console.log('app started on port 7000'))
+    startServer(7000);
 }).catch((error) => {
     console.log('cant connect to mongodb'+error)
 })
+const startServer = (port) => {
+  app.listen(port, (err) => {
+    if (err) {
+      startServer(port + 1);  
+    } else {
+      console.log(`App started on port ${port}`);
+    }
+  });
+};

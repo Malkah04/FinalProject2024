@@ -8,26 +8,28 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    fetch("http://localhost:7000/register", {
+    try {
+      const response = await fetch("http://localhost:7000/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ firstname,secondname, email, password }),
+      body: JSON.stringify({ first:firstname,second: secondname, email, password }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
+    const data = await response.json();
+    console.log("Success:", data);
         // Handle successful login here
-      })
-      .catch((error) => {
+  
+    }
+    catch(error){
         console.error("Error:", error);
         // Handle login error here
-      });
+      }
+    
   };
+
   return (
     <div className="register-container">
       <h1 className="register-title">Register</h1>
