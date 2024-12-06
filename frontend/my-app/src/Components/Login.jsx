@@ -4,18 +4,17 @@ import { Link } from "react-router-dom";
 import "./Login.css"
 
 export default function Login() {
-    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("")
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      // Handle login logic here
-      fetch("localhost:7000/login", {
+      fetch("http://localhost:7000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -39,12 +38,12 @@ export default function Login() {
         
             <input
                 type="text"
-                id="username"
-                placeholder="username"
-                name="username"
+                id="email"
+                placeholder="email"
+                name="email"
                 className="form-input"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
             />
            <i class="fa-solid fa-user"></i>
