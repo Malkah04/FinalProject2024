@@ -9,7 +9,9 @@ const cart=new Schema(
         productQuantity :{type :String , required:true},
         productPrice :{type :String , required:true}
         }
-     ]
+     ],
+     TotalPrice :{type : String, required: false},
+     TotalQuantity:{type : String, required: false}
     }
 )
 module.exports = mongoose.model('Cart', cart);
