@@ -45,6 +45,7 @@ body {
   }
 
 .register-container input[type="text"],
+.register-container input[type="email"],
 .register-container input[type="password"] {
     width: 80%;
     padding: 10px;

@@ -5,7 +5,7 @@ export default function Register() {
   
     const [firstname, setFirstname] = useState("");
     const [secondname, setSecondname] = useState("");
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
@@ -16,7 +16,7 @@ export default function Register() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ firstname,secondname, username, password }),
+      body: JSON.stringify({ firstname,secondname, email, password }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -65,12 +65,12 @@ export default function Register() {
             Username:
           </label> */}
           <input
-            type="text"
-            id="username"
-            placeholder="User Name"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            id="email"
+            placeholder="Email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="form-input"
             autoComplete="off"
