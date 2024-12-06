@@ -147,6 +147,28 @@ app.post('/editproduct', async (req,res)=>{
       res.status(500).json({ message: error.message });
   }
 });
+app.post('/adduser', async (req, res) => {
+  try {
+
+    let userParam = req.body;
+
+    if (await User.findOne({ email: userParam.email })) {
+      res.send('email "' + userParam.email + '" is already exist');
+    }
+    const user = new User(userParam);
+
+    const salt = await bcrypt.genSalt(10);
+    userParam.password = await bcrypt.hash(userParam.password, salt);
+    user.password = userParam.password;
+
+    await user.save();
+    res.send("user added successfully ")
+
+  } catch (err) {
+    res.status(500).send('server error: ' + err);
+  }
+});
+
 app.post('/addtocart', async (req, res) => {
   try {
     let { userId, productId, productQuantity } = req.body;
@@ -157,18 +179,47 @@ app.post('/addtocart', async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }
+
+    if (productQuantity > product.productQuantity) {
+      return res.status(404).json({ message: `The quantity available  ${product.productQuantity} is not enough for your order, please reorder later` });
+    }
+    let totalPrice = 0;
+    let totalQuantity = 0;
     let cart = await Cart.findOne({ userId });
-    if (!cart) {cart = new Cart({ userId,items: [{ productId, productQuantity ,productPrice:product.productPrice }]});
+    if (!cart) {
+      cart = new Cart({
+        userId, items: [{ productId, productQuantity, productPrice: product.productPrice }],
+        TotalPrice: product.productPrice * productQuantity,
+        TotalQuantity: productQuantity
+      });
+      product.productQuantity = parseInt(product.productQuantity) - parseInt(productQuantity);
+      await product.save();
       await cart.save();
       return res.status(200).json('Cart created and product added');
     }
     const existingItem = cart.items.find(item => item.productId.toString() === productId);
     if (existingItem) {
       existingItem.productQuantity = (parseInt(existingItem.productQuantity) + parseInt(productQuantity)).toString();
+      cart.items.forEach(item => {
+        totalPrice += parseFloat(item.productPrice) * parseInt(item.productQuantity);
+        totalQuantity += parseInt(item.productQuantity);
+      });
+      cart.TotalPrice = totalPrice;
+      cart.TotalQuantity = totalQuantity;
+      product.productQuantity = parseInt(product.productQuantity) - parseInt(productQuantity);
+      await product.save();
       await cart.save();
       return res.status(200).json('Product quantity updated');
     } else {
-      cart.items.push({ productId, productQuantity });
+      cart.items.push({ productId, productQuantity, productPrice: product.productPrice });
+      cart.items.forEach(item => {
+        totalPrice += parseFloat(item.productPrice) * parseInt(item.productQuantity);
+        totalQuantity += parseInt(item.productQuantity);
+      });
+      cart.TotalPrice = totalPrice;
+      cart.TotalQuantity = totalQuantity;
+      product.productQuantity = parseInt(product.productQuantity) - parseInt(productQuantity);
+      await product.save();
       await cart.save();
       return res.status(200).json('Product added to cart');
     }
@@ -177,19 +228,35 @@ app.post('/addtocart', async (req, res) => {
     res.status(500).json({ message: e.message });
   }
 });
-app.delete('/removefromcart',async (req,res)=>{
-  try{
-    let {userId, cartId,productId} =req.body
-    if (!userId || !cartId||!productId) {
-      return res.status(400).send( 'userId and cartId are required and productId' );
+app.delete('/removefromcart', async (req, res) => {
+  try {
+    let { userId, cartId, productId } = req.body
+    if (!userId || !cartId || !productId) {
+      return res.status(400).send('userId and cartId are required and productId');
     }
     let cart = await Cart.findById(cartId);
-    if(!cart) return res.status(404).json("Cart not found")
-      
+    if (!cart) return res.status(404).json("Cart not found")
+
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
     const itemProduct = cart.items.find(item => item.productId.toString() === productId);
-    if(!itemProduct) return res.status(404).json(`{message: cannot find any product with productId ${productId} in cartId ${cartId}}`)
-      
-    cart.items = cart.items.filter(item => item.productId.toString()!== productId);
+    if (!itemProduct) return res.status(404).json(`{message: cannot find any product with productId ${productId} in cartId ${cartId}}`)
+
+    cart.items = cart.items.filter(item => item.productId.toString() !== productId);
+
+    let totalPrice = 0;
+    let totalQuantity = 0;
+    cart.items.forEach(item => {
+      totalPrice += parseFloat(item.productPrice) * parseInt(item.productQuantity);
+      totalQuantity += parseInt(item.productQuantity);
+    });
+    cart.TotalPrice = totalPrice;
+    cart.TotalQuantity = totalQuantity;
+    product.productQuantity = parseInt(product.productQuantity) + parseInt(itemProduct.productQuantity);
+    await product.save();
     await cart.save();
     return res.status(200).json("items deleted successfully")
   }
