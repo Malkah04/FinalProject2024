@@ -9,7 +9,8 @@ body {
 
 .register-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
+    height: 350px;
     margin: 100px auto;
     padding: 20px;
     background-color: #fff;
@@ -17,39 +18,56 @@ body {
     border-radius: 8px;
 }
 
-.register-container h2 {
+.register-container h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color:rgb(119, 63, 129);
 }
 
 .register-container form {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
+.form-group {
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .form-input-1 {
+    flex: 1; 
+    max-width: 125px; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 12px; 
+  }
 
 .register-container input[type="text"],
 .register-container input[type="password"] {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 
 .register-container button {
-    width: 100%;
+    width: 85%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: rgb(119, 63, 129);
     color: white;
     border: none;
-    border-radius: 4px;
+    margin: 5px 0px;
+    margin-left: 25px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 16px;
 }
 
 .register-container button:hover {
-    background-color: #45a049;
+    opacity: 0.95;
 }
 
 .register-container .error-message {
@@ -67,11 +85,19 @@ body {
 }
 
 .register-links a {
-    color: #4CAF50;
+    color: rgb(119, 63, 129);
     text-decoration: none;
     margin: 5px 0;
+    font-weight: 600;
 }
 
 .register-links a:hover {
     text-decoration: underline;
+}
+
+.register-links p{
+    color:rgb(119, 63, 129);
+    text-decoration: none;
+    margin: 5px 0;
+    
 }
