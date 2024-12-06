@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bcrypt= require('bcrypt');
 const User=require('./models/user.model')
@@ -7,6 +8,7 @@ const Cart=require('./models/cart.model')
 const mongouri ="mongodb://localhost:27017/finalproject"
 
 const app = express()
+app.use(cors())
 
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }))
@@ -17,16 +19,21 @@ app.get('/', (req, res) => {
 
 app.post('/register', async (req, res) => {
       try{
-        let userParam=req.body;
-         if(await User.findOne({email : userParam.email}) ){
-            res.send('email: ' + userParam.email + " is already exist") ;
+        let {first,second ,email ,password} = req.body
+        if(!first ||!second||!email ||!password) return res.status(400).json({erorr:'All fields must be provided'})
+        
+         if(await User.findOne({email}) ){
+            res.status(400).json({error:`this ${email} is already exist`}) 
          }
+         if(password.trim()==='')res.json('password cannot be empty')
+         if(password.length <8)res.json('password must be at least 8 characters')
+          if(password.length<20)res.json('password cannot exceed 20 characters')
          const salt=await bcrypt.genSalt(10);
-         userParam.password=await bcrypt.hash(userParam.password,salt)
+         password=await bcrypt.hash(password,salt)
 
-        const user = new User(userParam);
+        const user = new User(...req.body,password);
         await user.save();
-        res.send("user added successfully ")
+        res.status(200).json("user added successfully ")
       }
       catch(err){
         res.status(500).json({error: err.message})
@@ -35,11 +42,11 @@ app.post('/register', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   try{
-    if(!req.body.email ||!req.body.password) return res.status(400).send('email and password must be provided')
+    if(!req.body.email ||!req.body.password) return res.status(400).json({erorr:'email and password must be provided'})
     const user=await User.findOne({email : req.body.email})
-    if(!user) return res.status(400).send('email or password is wrong')
+    if(!user) return res.status(400).json({error:'email or password is wrong'})
     const validPass=await bcrypt.compare(req.body.password,user.password)
-    if(!validPass) return res.status(400).send('email or password is wrong')
+    if(!validPass) return res.status(400).json({erorr:'email or password is wrong'})
     res.json( 'success login')
   }
   catch(err){

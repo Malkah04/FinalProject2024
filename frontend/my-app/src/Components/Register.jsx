@@ -11,7 +11,7 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle login logic here
-    fetch("localhost:7000/register", {
+    fetch("http://localhost:7000/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
