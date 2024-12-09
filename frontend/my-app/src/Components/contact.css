@@ -1,0 +1,70 @@
+.contact{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    min-height: 100vh;
+    /* background:rgb(223, 164, 234); */
+}
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 80%;
+    background: #fff;
+    padding: 25px 25px 30px;
+    border-radius: 6px; 
+    box-shadow: 0 0 10px  rgba(0, 0, 0, .1);
+    color: #333;
+    margin: 25px;
+}
+form h1 {
+    color:rgb(119, 63, 129);
+    text-align: center;
+    margin: 0;
+    font-size: 30px;
+}
+form p{
+    color:rgb(119, 63, 129);
+    text-align: center;
+    margin-top:2px ;
+    padding: 0;
+    margin-bottom:25px ;
+    font-size: 16px;
+}
+.input-box
+{
+    margin-top: 20px;
+}
+.input-box-row{
+    display: flex;
+    gap: 20px;
+}
+.field{
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    border: 2px solid #ddd;
+    outline: none;
+    border-radius: 6px;
+    color: #333;
+    margin-top: 8px;
+}
+.field.mess{
+    height: 100px;
+    resize: none;
+}
+button{
+    width:100% ;
+    height: 30px;
+    background:rgb(119, 63, 129);
+    border: none;
+    border-radius: 6px;
+    margin-top: 18px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+}
+button:hover{
+    background-color:rgb(157, 75, 172);
+    font-size: 16px;
+}
