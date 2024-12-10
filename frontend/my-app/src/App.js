@@ -35,6 +35,7 @@ function App() {
         <Route path="/backpack" element={<Backpack />} />
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/crossbody" element={<Crossbody />} />
+        <Route path="/test" element={<Test />} />
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
 
@@ -46,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;

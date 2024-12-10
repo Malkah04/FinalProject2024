@@ -96,11 +96,11 @@ app.post('/addproduct',  async (req, res) => {
 
 
 
-app.delete('/deleteproduct', async (req, res) => { 
+app.delete('/deleteproduct/:id', async (req, res) => { 
   
   try {
 
-      let productParam = req.body;
+      let productParam = req.params;
       if (!productParam.id) {
         return res.status(400).json({ message: 'Product ID is required' });
       }
