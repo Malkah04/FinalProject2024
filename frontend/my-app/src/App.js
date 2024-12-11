@@ -16,6 +16,10 @@ import Laptop from './Components/Laptop';
 import Crossbody from './Components/Crossbody';
 import Footer from './Components/Footer';
 import Main from './Components/Main';
+import Home from './Components/Home';
+
+import ALLproduct from './Components/ALLproduct';
+import Ourstory from './Components/Ourstory';
 
 function App() {
   return (
@@ -35,6 +39,9 @@ function App() {
         <Route path="/backpack" element={<Backpack />} />
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/crossbody" element={<Crossbody />} />
+        <Route path='home' element={<Home />} />
+        <Route path='/allproduct' element={<ALLproduct/>} />
+        <Route path='/ourstory' element={<Ourstory/>} />
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
 

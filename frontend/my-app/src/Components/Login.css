@@ -6,9 +6,8 @@ body {
 }
 
 .login-container {
-    width: 100%;
-    max-width: 350px;
-    height: 350px;
+    width: 350px;
+    height: 475px;
     margin: 100px auto;
     padding: 20px;
     background-color: #fff;
@@ -83,13 +82,17 @@ opacity: 0.95;
 .forgot-password-link{
     color: rgb(119, 63, 129);
     text-decoration: none;
-    margin: 15px 0; 
-    margin-left: 200px;
+    margin-top: 20px;
+    /* margin: 15px 0;  */
+    /* margin-left: 200px; */
 
 }
 .login-links p{
     color: rgb(119, 63, 129);
     text-decoration: none;
     margin: 5px 0;
-    
+ 
+}
+.login-button{
+    height: 40px;
 }
