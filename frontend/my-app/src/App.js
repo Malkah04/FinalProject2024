@@ -11,11 +11,12 @@ import About from './Components/About';
 import Privacy from './Components/Privacy';
 import Contact from './Components/Contact';
 import Feedback from './Components/feedback';
-import Backpack from './Components/Backpack';
+import Backbag from './Components/Backbag';
 import Laptop from './Components/Laptop';
 import Crossbody from './Components/Crossbody';
 import Footer from './Components/Footer';
 import Main from './Components/Main';
+import Backbag from './Components/Backbag';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path="/backpack" element={<Backpack />} />
+        <Route path="/backbag" element={<Backbag />} />
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/crossbody" element={<Crossbody />} />
         <Route path="*" element={<div>Page Not Found</div>} />
