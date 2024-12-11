@@ -1,11 +1,12 @@
-.contact{
+ .contact{
     display: flex;
     justify-content:center ;
     align-items: center;
     min-height: 100vh;
-    /* background:rgb(223, 164, 234); */
+
 }
-form{
+
+.f{
     display: flex;
     flex-direction: column;
     max-width: 600px;
@@ -17,13 +18,13 @@ form{
     color: #333;
     margin: 25px;
 }
-form h1 {
+.input-box-row h1 {
     color:rgb(119, 63, 129);
     text-align: center;
     margin: 0;
     font-size: 30px;
 }
-form p{
+.f p{
     color:rgb(119, 63, 129);
     text-align: center;
     margin-top:2px ;
@@ -67,4 +68,4 @@ button{
 button:hover{
     background-color:rgb(157, 75, 172);
     font-size: 16px;
-}
+} 
