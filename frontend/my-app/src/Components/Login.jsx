@@ -46,7 +46,7 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
             />
-           <i class="fa-solid fa-user"></i>
+           {/* <i class="fa-solid fa-user"></i> */}
         </div>
         <div className="form-group">
             {/* <label htmlFor="password" className="form-label">Password:</label> */}
