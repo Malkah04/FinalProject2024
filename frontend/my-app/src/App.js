@@ -16,14 +16,7 @@ import Laptop from './Components/Laptop';
 import Crossbody from './Components/Crossbody';
 import Footer from './Components/Footer';
 import Main from './Components/Main';
-<<<<<<< HEAD
 import Backbag from './Components/Backbag';
-=======
-import Home from './Components/Home';
-
-import ALLproduct from './Components/ALLproduct';
-import Ourstory from './Components/Ourstory';
->>>>>>> 5e34e53319a0cae7f6c98b76d90fa33098564618
 
 function App() {
   return (

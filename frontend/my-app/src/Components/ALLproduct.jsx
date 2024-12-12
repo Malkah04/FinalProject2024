@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
-
+import './ALLproduct.css';
 
 export default function ALLproduct() {
   const [products, setProducts] = useState([]);
@@ -40,11 +40,12 @@ export default function ALLproduct() {
   };
 
   return (
-     <div>
+    <div className='allproducts'>
+     <div className='allproducts2'>
     <h1>All Products</h1>
 
     <div >
-        <label>
+        <label className='min-price '>
           Min Price:
           <input
             type="number"
@@ -53,7 +54,8 @@ export default function ALLproduct() {
             placeholder="0"
           />
         </label>
-        <label >
+        <br></br>
+        <label className='max-price ' >
           Max Price:
           <input
             type="number"
@@ -62,7 +64,8 @@ export default function ALLproduct() {
             placeholder="1000"
           />
         </label>
-        <button onClick={handleFilter} >
+        <br></br>
+        <button className='Buton' onClick={handleFilter} >
           Apply Filter
         </button>
       </div>
@@ -70,11 +73,11 @@ export default function ALLproduct() {
     {errors ? (
       <p>Error: {errors}</p>
     ) : (
-      <div>
+      <div >
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <div key={product._id}>
-              <img
+            <div className='filtered_products' key={product._id}>
+              <img 
                 src={product.productImage}
                 alt={product.productName}
                 
@@ -89,6 +92,7 @@ export default function ALLproduct() {
         )}
       </div>
     )}
+  </div>
   </div>
 );
 }
