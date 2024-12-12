@@ -12,11 +12,14 @@ import Privacy from './Components/Privacy';
 import Contact from './Components/Contact';
 import Feedback from './Components/feedback';
 import Backbag from './Components/Backbag';
+import Home from './Components/Home';
+import ALLproduct from './Components/ALLproduct';
+import Ourstory from './Components/Ourstory';
 import Laptop from './Components/Laptop';
 import Crossbody from './Components/Crossbody';
 import Footer from './Components/Footer';
 import Main from './Components/Main';
-import Backbag from './Components/Backbag';
+
 
 function App() {
   return (
