@@ -1,0 +1,111 @@
+.allproducts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.allproducts2 {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 80%;
+    background: #fff;
+    padding: 25px 25px 30px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    color: #333;
+    margin: 25px;
+}
+
+h1 {
+    margin-bottom: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+}
+
+.min-price {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+
+    margin: 20px 10px 20px 40px;
+
+}
+
+.min-price input {
+
+
+    margin: 20px 10px 20px 10px;
+    font-size: 15px;
+}
+
+.max-price {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+
+    margin: 20px 10px 20px 40px;
+
+
+}
+
+.max-price input {
+    margin: 20px 10px 20px 10px;
+    font-size: 15px;
+}
+
+input :hover {
+    background-color: rgb(119, 63, 129);
+    border-color: rgb(119, 63, 129);
+}
+
+.Buton {
+
+    width: 30%;
+    height: 30px;
+    background: rgb(119, 63, 129);
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-left: 35%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+
+}
+
+.Buton:hover {
+    background-color: rgb(157, 75, 172);
+    font-size: 16px;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+
+.filtered_products {
+
+    justify-content: center;
+    background-color: white;
+    width: 500px;
+    border: 3px solid #ccc;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filtered_products h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+
+.filtered_products img {
+    max-width: 100%;
+    height: auto;
+}
+
+.filtered_products p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+}
