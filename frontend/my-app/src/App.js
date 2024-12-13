@@ -21,12 +21,25 @@ import Footer from './Components/Footer';
 import Main from './Components/Main';
 
 
+import Header1 from './Components/Header1';
+
+// import Backbag from './Components/Backbag';
+
+import Home from './Components/Home';
+
+import ALLproduct from './Components/ALLproduct';
+import Ourstory from './Components/Ourstory';
+
+import Backbag from './Components/Backbag';
+
+
+
 function App() {
   return (
     
     <>
     <Router>
-       
+       <Header1/>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
