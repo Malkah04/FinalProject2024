@@ -8,6 +8,9 @@ export default function ALLproduct() {
   const [errors, setErrors] = useState(null);
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
+  const [detail, setDetail] = useState(null);
+  const [id, setId] = useState(null)
+  const [visiable, setvisiable] = useState(false)
 
 
   useEffect(() => {
@@ -38,13 +41,30 @@ export default function ALLproduct() {
     );
     setFilteredProducts(filtered);
   };
+  let display = filteredProducts.length > 0 ? filteredProducts : products;
+  
+  const details = (id) => {
+    setId(id);
+    setvisiable(true);
+  };
+  const closeDetails = () => {
+    setvisiable(false); 
+  };
+  useEffect(() => {
+    if (id) {
+      const pro = products.find((product) => product._id === id);
+      setDetail(pro);
+    }
+  }, [id]);
+
+  
 
   return (
     <div className='allproducts'>
      <div className='allproducts2'>
     <h1>All Products</h1>
 
-    <div >
+    <div  className='in'>
         <label className='min-price '>
           Min Price:
           <input
@@ -65,33 +85,57 @@ export default function ALLproduct() {
           />
         </label>
         <br></br>
-        <button className='Buton' onClick={handleFilter} >
+      </div>
+      <button className='Buton' onClick={handleFilter} style={{marginButtom:"0px"}}  >
           Apply Filter
         </button>
-      </div>
+
+      
+  
 
     {errors ? (
       <p>Error: {errors}</p>
     ) : (
-      <div >
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <div className='filtered_products' key={product._id}>
+      <div className='d' style={{ display: "flex", textAlign: "center" ,alignItems: "center"}} >
+        {display.length > 0 ? (
+          display.map((product) => (
+            <div className='filtered_products s' key={product.id}>
               <img 
+
                 src={product.productImage}
                 alt={product.productName}
                 
               />
+              <p className="plus" onClick={() => details(product._id)}>+</p>
               <h3>{product.productName}</h3>
-              <p>{product.productDescription}</p>
-              <p>Price: ${product.productPrice}</p>
+              <p>{product.productPrice}LE</p>
+           
+
             </div>
           ))
         ) : (
           <p>No products found</p>
         )}
       </div>
-    )}
+    )} 
+    {visiable? ( <div className="detail">
+          {id && detail && (
+            <div>
+              <div className='close'>
+              <i  onClick={() => closeDetails()} class="fa-solid fa-x"></i>
+              </div>
+              <h2>{detail.productName}</h2>
+              <img src={detail.productImage} alt={detail.productName} />
+              <p>{detail.productDescription}</p>
+              <p>Price: {detail.productPrice} LE</p>
+              <button className='bt'>Add to cart</button>
+            
+            </div>
+          )}
+        </div>):
+        (null)
+        }
+       
   </div>
   </div>
 );

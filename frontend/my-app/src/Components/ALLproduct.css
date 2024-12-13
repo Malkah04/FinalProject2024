@@ -1,42 +1,75 @@
-.allproducts {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 50vh;
-}
-
 .allproducts2 {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
-    width: 80%;
+    /* max-width: 600px; */
+    width: 100%;
+    /* width: 80%; */
     background: #fff;
     padding: 25px 25px 30px;
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     color: #333;
-    margin: 25px;
+    /* margin: 25px; */
 }
-
-h1 {
-    margin-bottom: 50px;
+.d{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10;
+}
+.d :hover{
+    cursor: pointer;
+    
+}
+.s:hover .plus,
+.s:hover .pls,
+.s:hover .pl{
+    display: flex;
+}
+.plus{
+    background-color: purple;
+    border-radius: 50%;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+;
+    justify-content: center;
+    align-items: center;
+    margin-left: 242px;
+    margin-top: -40px;
+    z-index: 1;
+    position: relative;
+    display: none;
+}
+ h1 {
+    margin-bottom: 20px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 40px;
 }
 
+.in{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
 .min-price {
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
-
     margin: 20px 10px 20px 40px;
 
 }
 
-.min-price input {
-
-
+.min-price input,
+.max-price input {
+     border-radius: 20px;
+     width: 70px;
+     height: 30px;
     margin: 20px 10px 20px 10px;
     font-size: 15px;
+    border-color: rgb(168, 20, 161);
+
 }
 
 .max-price {
@@ -57,19 +90,19 @@ input :hover {
     background-color: rgb(119, 63, 129);
     border-color: rgb(119, 63, 129);
 }
-
 .Buton {
-
     width: 30%;
     height: 30px;
     background: rgb(119, 63, 129);
     font-family: 'Times New Roman', Times, serif;
     border-radius: 6px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left: 35%;
     color: #fff;
     cursor: pointer;
     font-size: 15px;
+    margin-bottom: 10px;
+
 
 }
 
@@ -78,34 +111,74 @@ input :hover {
     font-size: 16px;
 }
 
-p {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 30px;
-}
 
 .filtered_products {
 
     justify-content: center;
     background-color: white;
-    width: 500px;
+    width: 300px;
+    height: 550px;
     border: 3px solid #ccc;
-    margin: 30px;
+    margin-top: 20px;
     padding: 10px;
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.filtered_products h3 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 30px;
+    gap: 10;
 }
 
 .filtered_products img {
     max-width: 100%;
-    height: auto;
+    height: 310px;
 }
-
-.filtered_products p {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 25px;
+.detail{
+    width: 50%;
+    height: 95%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 4px rgba(116, 51, 101);
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: auto;
+}
+@media (max-width: 768px) {
+    .detail{
+        width: 100%;
+        height: 100%;
+        top: 0; 
+        left: 0; 
+        transform: none; 
+        border-radius: 0; 
+        box-shadow: none; 
+    }
+}
+.detail img{
+    width: 300px;
+    height: 300px;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  
+}
+.bt{
+    width: 110px;
+    height: 30px;
+    background-color: rgb(97, 38, 58);
+    border-radius: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+.bt:hover{
+    opacity: 8;
 }

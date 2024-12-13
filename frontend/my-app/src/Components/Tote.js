@@ -1,13 +1,17 @@
 import React from 'react'
 import  { useState, useEffect } from 'react'
+import './Tote.css'
 
 
-const Crossbody = () => {
+const Tote = () => {
 
   const [products, setProducts] = useState([]);
       const [filteredProducts, setFilteredProducts] = useState([]);
     const [minPrice, setMinPrice] = useState('');
       const [maxPrice, setMaxPrice] = useState('');
+         const [detail, setDetail] = useState(null);
+          const [id, setId] = useState(null)
+          const [visiable, setvisiable] = useState(false)
     
     useEffect(() => {
       fetch('http://localhost:7000/products')
@@ -25,12 +29,28 @@ const Crossbody = () => {
       );
       setFilteredProducts(filtered);
     };
+      const details = (id) => {
+        setId(id);
+        setvisiable(true);
+      };
+        const closeDetails = () => {
+          setvisiable(false); 
+        };
+        useEffect(() => {
+          if (id) {
+            const pro = products.find((product) => product._id === id);
+            setDetail(pro);
+          }
+        }, [id]);
+    let display = filteredProducts.length > 0 ? filteredProducts : products;
+
   
   
   return (
     <div>
-      <h1>Crossbody</h1>
+      <h1>Tote Bags</h1>
     <div >
+      <div className="in">
       <label className='min-price '>
         Min Price:
         <input
@@ -50,24 +70,43 @@ const Crossbody = () => {
           placeholder="1000"
         />
       </label>
+      </div>
       <br></br>
       <button className='Buton' onClick={handleFilter} >
         Apply Filter
       </button>
     </div>
     <div className='product'>
-    {filteredProducts
-      .filter((product) => product.productCategory === 'laptop')
+    {display
+      .filter((product) => product.productCategory === 'tote')
       .map((product) => (
-        <div className='product_id' key={product._id}>
+        <div className='prod s' key={product._id}>
           <img  src={product.productImage} alt={product.productName} />
+          <p className="pl" onClick={() => details(product._id)}>+</p>
           <p className='product_name' >{product.productName}</p>
-          <p className='product_price' >Price: {product.productPrice}</p>
+          <p className='product_price' > {product.productPrice}LE</p>
         </div>
       ))}
+         {visiable? ( <div className="detail">
+      {id && detail && (
+        <div>
+          <div className='close'>
+          <i  onClick={() => closeDetails()} class="fa-solid fa-x"></i>
+          </div>
+          <h2>{detail.productName}</h2>
+          <img src={detail.productImage} alt={detail.productName} />
+          <p>{detail.productDescription}</p>
+          <p>Price: {detail.productPrice} LE</p>
+          <button className='bt'>Add to cart</button>
+        
+        </div>
+      )}
+    </div>):
+    (null)
+    }
   </div>
   </div>
   )
 }
 
-export default Crossbody
+export default Tote
