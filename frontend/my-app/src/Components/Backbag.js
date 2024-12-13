@@ -21,6 +21,8 @@ const Backbag = () => {
     );
     setFilteredProducts(filtered);
   };
+  let display = filteredProducts.length > 0 ? filteredProducts : products;
+
 
 
   return (
@@ -51,7 +53,7 @@ const Backbag = () => {
           Apply Filter
         </button>
       </div>
-      {filteredProducts
+      {display
         .filter((product) => product.productCategory === 'Backpack')
         .map((product) => (
           <div key={product._id}>
