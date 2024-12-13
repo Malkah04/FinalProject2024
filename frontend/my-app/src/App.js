@@ -17,7 +17,6 @@ import Ourstory from './Components/Ourstory';
 import Laptop from './Components/Laptop';
 import Tote from './Components/Tote';
 import Footer from './Components/Footer';
-import Main from './Components/Main';
 import Header1 from './Components/Header1';
 
 
@@ -30,7 +29,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Main />} /> 
+        <Route path="/" element={<Home />} /> 
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact" element={<Contact />} />
