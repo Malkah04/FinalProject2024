@@ -5,7 +5,8 @@ const bcrypt= require('bcrypt');
 const User=require('./models/user.model')
 const Product=require('./models/Product.model')
 const Cart=require('./models/cart.model')
-const mongouri ="mongodb://localhost:27017/finalproject"
+const mongouri ="mongodb+srv://malk04:Mx0wSJBask92oSYB@cluster0.pmz7i.mongodb.net/"
+
 
 const app = express()
 app.use(cors())
@@ -320,19 +321,11 @@ app.delete('/clearcart',async (req, res) => {
 
 mongoose.set("strictQuery", false)
 mongoose
-.connect('mongodb://localhost:27017/finalproject')
+.connect(mongouri)
 .then(() => {
     console.log('connected to MongoDB')
-    startServer(7000);
+    //listen on specific port 
+    app.listen(7000, () => console.log('app started on port 7000'))
 }).catch((error) => {
     console.log('cant connect to mongodb'+error)
 })
-const startServer = (port) => {
-  app.listen(port, (err) => {
-    if (err) {
-      startServer(port + 1);  
-    } else {
-      console.log(`App started on port ${port}`);
-    }
-  });
-};
