@@ -11,13 +11,16 @@ import Privacy from './Components/Privacy';
 import Contact from './Components/Contact';
 import Feedback from './Components/feedback';
 import Backpack from './Components/Backpack';
+import Laptop from './Components/Laptop';
+import Footer from './Components/Footer';
+import Main from './Components/Main';
+import Tote from './Components/Tote';
+import Header1 from './Components/Header1';
+
 import Home from './Components/Home';
 import ALLproduct from './Components/ALLproduct';
 import Ourstory from './Components/Ourstory';
-import Laptop from './Components/Laptop';
-import Tote from './Components/Tote';
-import Footer from './Components/Footer';
-import Header1 from './Components/Header1';
+
 
 
 function App() {
