@@ -1,10 +1,17 @@
+
 import React, { useState, useEffect } from 'react'
+import './Backpack';
 
 const Backbag = () => {
   const [products, setProducts] = useState([]);
    const [filteredProducts, setFilteredProducts] = useState([]);
    const [minPrice, setMinPrice] = useState('');
      const [maxPrice, setMaxPrice] = useState('');
+    const [detail, setDetail] = useState(null);
+    const [id, setId] = useState(null)
+    const [visiable, setvisiable] = useState(false)
+
+
   useEffect(() => {
     fetch('http://localhost:7000/products')
     .then((response) => response.json())
@@ -21,6 +28,21 @@ const Backbag = () => {
     );
     setFilteredProducts(filtered);
   };
+ const details = (id) => {
+    setId(id);
+    setvisiable(true);
+  };
+    const closeDetails = () => {
+      setvisiable(false); 
+    };
+    useEffect(() => {
+      if (id) {
+        const pro = products.find((product) => product._id === id);
+        setDetail(pro);
+      }
+    }, [id]);
+
+
   let display = filteredProducts.length > 0 ? filteredProducts : products;
 
 
@@ -29,6 +51,7 @@ const Backbag = () => {
     <div>
       <h1> Back bag </h1>
       <div >
+        <div className='in'>
         <label className='min-price '>
           Min Price:
           <input
@@ -49,19 +72,43 @@ const Backbag = () => {
           />
         </label>
         <br></br>
+        </div>
         <button className='Buton' onClick={handleFilter} >
           Apply Filter
         </button>
       </div>
+      <div className='product d'>
       {display
         .filter((product) => product.productCategory === 'Backpack')
         .map((product) => (
-          <div key={product._id}>
-            <img src={product.productImage} alt={product.productName} />
-            <p>{product.productName}</p>
+          <div className='product_id s' key={product._id}>
+            <img  src={product.productImage} alt={product.productName} />
+            <p className="pls" onClick={() => details(product._id)}>+</p>
+            <p className='product_name' >{product.productName}</p>
+            <p className='product_price' >Price: {product.productPrice}</p>
           </div>
         ))}
-    </div>
+ {visiable? ( <div className="detail">
+      {id && detail && (
+        <div>
+          <div className='close'>
+          <i  onClick={() => closeDetails()} class="fa-solid fa-x"></i>
+          </div>
+          <h2>{detail.productName}</h2>
+          <img src={detail.productImage} alt={detail.productName} />
+          <p>{detail.productDescription}</p>
+          <p>Price: {detail.productPrice} LE</p>
+          <button className='bt'>Add to cart</button>
+        
+        </div>
+      )}
+
+</div>):
+    (null)
+    }
+   
+</div>
+</div>
   );
 
 

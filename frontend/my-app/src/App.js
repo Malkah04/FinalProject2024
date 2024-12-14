@@ -10,7 +10,7 @@ import About from './Components/About';
 import Privacy from './Components/Privacy';
 import Contact from './Components/Contact';
 import Feedback from './Components/feedback';
-import Backbag from './Components/Backbag';
+import Backpack from './Components/Backpack';
 import Home from './Components/Home';
 import ALLproduct from './Components/ALLproduct';
 import Ourstory from './Components/Ourstory';
@@ -34,7 +34,7 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path="/backbag" element={<Backbag />} />
+        <Route path="/Backpack" element={<Backpack />} />
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/tote" element={<Tote />} />
         <Route path='home' element={<Home />} />
