@@ -4,17 +4,22 @@ body {
     margin: 0;
     padding: 0;
 }
+.main-container {
+    height: 100vh;
+    
+}
+
 
 .login-container {
     width: 350px;
-    height: 500px;
-    margin: 100px auto;
+    height: 445px;
+    margin: 100px 0px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    
-    
+    z-index: 1;
+    margin-left: 160px;
 }
 
 .login-container h1 {
@@ -95,4 +100,105 @@ opacity: 0.95;
 }
 .login-button{
     height: 40px;
+}
+
+
+.welcome-container {
+    transform: translateX(-50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    width: 460px;
+    height: 535px;
+    background-color: #ccc;
+     margin-top: 52px;
+     border-radius: 8px;
+     z-index: -1;
+     margin-right: 50px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     background-color:rgb(119, 63, 129) ;
+    
+}
+
+.welcome-container h1 {
+    color: rgb(249, 243, 250);
+    margin-bottom: 30px;
+}
+
+.welcome-container p {
+    font-size: 14px;
+    color: #faf7f7;
+   margin-bottom: 30px;
+}
+
+
+.register-button a {
+    padding: 10px;
+    background-color: rgb(176, 172, 177);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    border: white;
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    margin-bottom: 50px;
+    text-decoration: none;
+}
+
+.register-button:hover {
+    opacity: 0.95;
+}
+.welcome-container,
+.login-container{
+    /* flex: 2; */
+    justify-content: center;
+}
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column; 
+    }
+
+    .login-container,
+    .welcome-container {
+        margin: 10px auto; 
+        width: 95%; 
+    }
+
+    .login-container button,
+    .register-button a {
+        font-size: 14px;
+    }
+
+    .welcome-container h1 {
+        font-size: 20px;
+    }
+
+    .welcome-container p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container,
+    .welcome-container {
+        width: 100%; 
+    }
+
+    .welcome-container h1,
+    .login-container h1 {
+        font-size: 18px;
+    }
+
+    .welcome-container p {
+        font-size: 12px;
+    }
+
+    .login-container button,
+    .register-button a {
+        font-size: 12px;
+        padding: 8px;
+    }
 }

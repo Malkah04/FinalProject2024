@@ -31,6 +31,7 @@ export default function Register() {
   };
 
   return (
+  < div style={{display:'flex'}}>
     <div className="register-container">
       <h1 className="register-title">Register</h1>
       <form onSubmit={handleSubmit} className="register-form" autoComplete="off">
@@ -97,13 +98,21 @@ export default function Register() {
         <button type="submit" className="form-button">
           Register
         </button>
-        <div className="register-links">
-        <p className="login-link-p">Do you have an account?
+        {/* <div className="register-links">
+        <p className="login-link-p">Don't have an account?
           <a href="/login" className="login-link">
           Login</a>
           </p>
-        </div>
+        </div> */}
       </form>
+      </div>
+      <div class="welcome-container1">
+        <h1>Welcome Back!</h1>
+        <p>Enter personal details to your employee account.</p>
+        <button class="login-button"> <a href="/login" className="login-link"> Login</a></button>
     </div>
+   </div>
+ 
+
   );
 };
