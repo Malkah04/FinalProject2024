@@ -1,148 +1,127 @@
-header {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px 10px;
-    background-color: #b7d490 ;
-    border-bottom: 1px solid #ddd;
-  }
-  /* #db89e6 */
-  /* #2a879e */
-  
-  nav {
-    flex: 1; 
-    display: flex;
-    font-size: larger;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 20px;
-    
-  }
-  
-  
-  nav ul {
-    display: flex; 
-    gap: 20px; 
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  
-  nav ul li {
-    color: #ddd;
-    position: relative; 
-    cursor: pointer;
-  }
-  
-  /* Links */
-  nav ul li a {
-    text-decoration: none;
-    color: #ddd;
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: color 0.3s;
-  }
-
-  nav ul li a:visited {
-    color: #551A8B;
-  }
-
-  nav ul li a:active {
-    color: #551A8B; 
-  }
-  
-  nav ul li a:hover {
-    color: #a82fc0a9;
-  }
-  
-  /* Dropdown menu */
-  nav ul li ul {
-    position: absolute;
-    top: 100%; /* Position dropdown below the parent */
-    left: 10;
-    right: 10;
-    background-color:#c5e9ba;
-    border: 0px dashed #c5e9ba;
-    border-radius: 4px;
-    list-style: none;
-    padding: 5px 0;
-    margin: 0;
-    display: none; /* Hidden by default */
-    box-shadow: 0px 4px 6px rgba(253, 253, 253, 0.877);
-  }
-  
-  nav ul li:hover ul {
-    display:block; 
-    
-  }
-  
-  nav ul li ul li {
-    padding: 5px 15px;
-  }
-  
-  nav ul li ul li a {
-    color: #333;
-    font-weight: normal;
-  }
-  
-  nav ul li ul li a:hover {
-    color: #9dff00;
-  }
-  
-  /* Account section */
-  nav ul li img {
-    vertical-align: middle;
-    margin-right: 5px;
-    border-radius: 50%; /* Circular logo */
-    border: 2px solid #ddd; /* Optional border */
-    object-fit: cover;
-  }
-  .nav-list {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #9f4fb5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.nav-item {
-    margin: 0 15px;
+.header-logo {
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
-.link-account {
-    padding: 0;
-    color: #fff;
-    text-decoration: none;
+.header-logo .header-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.link {
-    color: #fff;
-    text-decoration:none;
+.menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #722F84;
 }
 
-.dropdown {
-    position: absolute;
-    background: #A349A4;
-    color: #fff;
-    padding: 10px;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-}
-
-.dropdown-item {
-    margin: 5px 0;
-}
-.header-title{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.header-nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 2; 
+  gap: 20px;
 }
 
 .header-nav-link {
-  color: white; 
-  text-decoration: none; 
-  font-weight: bold; 
-
-
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
-.header-profile {
-  margin-right: 10px;
+
+.header-nav-link:hover {
+  color: #722F84;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 160px;
+  background-color: #ffffff;
+  padding: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  list-style: none;
+  padding: 10px 15px;
+}
+
+.dropdown-item {
+  text-decoration: none;
+  color: #000; 
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  color: #722F84;
+}
+
+
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%; 
+  height: 100%; 
+  background-color: #ffffff;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.sidebar-link:hover {
+  color:#722F84 ;
+}
+
+
+@media (max-width: 768px) {
+  .header-nav {
+    display: none; 
+  }
+
+  .menu-icon {
+    display: block;
+  }
 }
