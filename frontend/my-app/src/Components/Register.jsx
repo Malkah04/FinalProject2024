@@ -98,7 +98,7 @@ export default function Register() {
           Register
         </button>
         <div className="register-links">
-        <p className="login-link-p">Don't have an account?
+        <p className="login-link-p">Do you have an account?
           <a href="/login" className="login-link">
           Login</a>
           </p>

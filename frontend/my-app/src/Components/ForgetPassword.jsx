@@ -1,15 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from "react-router-dom";
-import "./Login.css"
+import "./forgetPassword.css"
 
-export default function Login() {
+ function ForgetPassword() {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      fetch("http://localhost:7000/login", {
+      fetch("http://localhost:7000/forgetpassword", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,10 +28,10 @@ export default function Login() {
         });
     };
   return (
-    <div className="login-container">
-    <h1 className="login-title">Login</h1>
-    <form className="login-form" onSubmit={handleSubmit}>
-        <div className="form-group">
+    <div className="forgetpassword-container">
+    <h1 className="forgetpassword-title">Forget Password</h1>
+    <form className="forgetpassword-form" onSubmit={handleSubmit}>
+        <div className="forgetpassword-group">
             
             {/* <label htmlFor="username" className="form-label">Username:</label> */}
         
@@ -41,19 +40,19 @@ export default function Login() {
                 id="email"
                 placeholder="email"
                 name="email"
-                className="form-input"
+                className="formforgetpassword-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
             />
            {/* <i class="fa-solid fa-user"></i> */}
         </div>
-        <div className="form-group">
+        <div className="formforgetpassword-group">
             {/* <label htmlFor="password" className="form-label">Password:</label> */}
             <input
                 type="password"
-                id="password"
-                placeholder="password"
+                id="newpassword"
+                placeholder="New password"
                 name="password"
                 className="form-input"
                 value={password}
@@ -62,12 +61,25 @@ export default function Login() {
             />
 
         </div>
-        <div className="login-links">
-           <p className="forgrtpassword-link-p">Do you <a href="/forgetpassword" className="forgetpassword-link">Forget Password</a></p>
+        <div className="formforgetpassword-group">
+            {/* <label htmlFor="password" className="form-label">Password:</label> */}
+            <input
+                type="password"
+                id="password"
+                placeholder="Confirm new password"
+                name="password"
+                className="formforgetpassword-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+            />
+
         </div>
-        <button type="submit" className="login-button">Login</button>
-        <div className="login-links">
-           <p className="register-link-p">Don't have an account? <a href="/register" className="register-link">Register</a></p>
+        <button type="submit" className="forgetpassword-button">Change Password</button>
+        <div className="forgetpassword-strength">
+           <p className="forgetpassword-strength-p"> Use at least 8 character </p>
+           <p className="forgetpassword-strength-p"> Password must contain upper case letters </p>
+           <p className="forgetpassword-strength-p"> Password must contain letters and digits</p>
         </div>
     </form>
 </div>
@@ -75,3 +87,4 @@ export default function Login() {
   
 }
 
+export default ForgetPassword;
