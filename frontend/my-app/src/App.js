@@ -19,6 +19,7 @@ import Tote from './Components/Tote';
 import Footer from './Components/Footer';
 import Header1 from './Components/Header1';
 import Addproduct from './Components/Addproduct';
+import CartList from './Components/CartList';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/tote" element={<Tote />} />
         <Route path='home' element={<Home />} />
         <Route path='/allproduct' element={<ALLproduct/>} />
+        <Route path='/CartList' element={<CartList/>} />
         <Route path='/ourstory' element={<Ourstory/>} />
         <Route path='/add' element={<Addproduct/>}/>
         <Route path="*" element={<div>Page Not Found</div>} />
