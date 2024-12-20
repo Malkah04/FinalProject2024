@@ -19,11 +19,7 @@
 }
 .d :hover{
     cursor: pointer;
-}
-.d img:hover{
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.4); 
-    transform: scale(1.1); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    
 }
 .s:hover .plus,
 .s:hover .pls,
@@ -32,7 +28,7 @@
 }
 .plus{
     background-color: purple;
-    /* border-radius: 50%; */
+    border-radius: 50%;
     color: white;
     width: 30px;
     height: 30px;
@@ -57,6 +53,9 @@
     align-items: center;
     justify-content: center;
     
+}
+.detial-price{
+    color: purple;
 }
 .min-price {
     font-family: 'Times New Roman', Times, serif;
@@ -89,33 +88,6 @@
     margin: 20px 10px 20px 10px;
     font-size: 15px;
 }
-
-input :hover {
-    background-color: rgb(119, 63, 129);
-    border-color: rgb(119, 63, 129);
-}
-.Buton {
-    width: 30%;
-    height: 30px;
-    background: rgb(119, 63, 129);
-    font-family: 'Times New Roman', Times, serif;
-    border-radius: 6px;
-    margin-top: 0px;
-    margin-left: 35%;
-    color: #fff;
-    cursor: pointer;
-    font-size: 15px;
-    margin-bottom: 10px;
-
-
-}
-
-.Buton:hover {
-    background-color: rgb(157, 75, 172);
-    font-size: 16px;
-}
-
-
 .filtered_products {
 
     justify-content: center;
@@ -134,9 +106,6 @@ input :hover {
     max-width: 100%;
     height: 310px;
 }
-.filtered_products .price{
-    color: #9f0f5dd6;
-} 
 .detail{
     width: 50%;
     height: 95%;
@@ -189,33 +158,105 @@ input :hover {
 .bt:hover{
     opacity: 8;
 }
-.count{
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    color: purple;
-    width: 30%;
+
+.Buton {
+    width: 10%;
+    height: 30px;
+    background: rgb(119, 63, 129);
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 20px;
+    margin-top: 0px;
+    margin-right: 55%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    
 }
-.count .p,
-.count .n,
-.count .m{
-    margin-left: 5px;
-    width: 35px;
-    height: 28px;
-    border: 1px solid #dac5ed;
+.Buton:hover {
+    background-color: rgb(157, 75, 172);
+    font-size: 16px;
+}
+.filters {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .filters select {
+    appearance: none; 
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #fff no-repeat right 10px center;
+    background-size: 12px;
+  }
+  .filters select:hover {
+    background-color: rgb(247, 243, 248);
+}
+
+  .filters .price-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px; 
+    width: 80px; 
+    text-align: center;
+  }
+  .filters .price-input:hover {
+    background-color: rgb(247, 243, 248);
+}  
+  .search-container {
+    position: absolute;
+    top: 150px; 
+    right: 20px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: larger;
-    transition: ease 1s;
-}
-.count .m:hover{
-    cursor: pointer;
-    background-color:purple;
+    width: auto;
+    z-index: 10; 
+  }
+  
+  .search-container input {
+    width: 200px; 
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-container button {
+    padding: 10px;
+    background-color: rgb(119, 63, 129);
     color: white;
-}
-.count .p:hover{
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
-    background-color:purple;
-    color: white;
+  }
+   
+
+@media (max-width: 800px) {
+    .Buton {
+        width: auto; 
+        height: 25px; 
+        font-size: 9px; 
+        padding: 5px 10px; 
+        margin: 5px; 
+    }
+
+
+    .filters {
+        display: flex;
+        justify-content: space-between; 
+        gap: 5px; 
+    }
+
+    .filters select,
+    .filters .price-input {
+        width: auto; 
+        font-size: 12px; 
+        padding: 5px; 
+        margin: 5px; 
+    }
+
 }
+
