@@ -29,7 +29,9 @@ export default function Login() {
         });
     };
   return (
+    < div style={{display:'flex', justifyContent: 'center'}}>
     <div className="login-container">
+ <div className="main-container">
     <h1 className="login-title">Login</h1>
     <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-group">
@@ -62,16 +64,20 @@ export default function Login() {
             />
 
         </div>
-        <div className="login-links">
-           <p className="forgrtpassword-link-p">Do you <a href="/forgetpassword" className="forgetpassword-link">Forget Password</a></p>
-        </div>
+        <Link to="/forgot-password" className="forgot-password-link">Forgot Password</Link>
+
         <button type="submit" className="login-button">Login</button>
-        <div className="login-links">
-           <p className="register-link-p">Don't have an account? <a href="/register" className="register-link">Register</a></p>
-        </div>
+       
     </form>
+    </div>
+    
 </div>
+<div class="welcome-container">
+        <h1>Welcome Back!</h1>
+        <p>Enter personal details to your employee account.</p>
+        <button class="register-button"> <a href="/register" className="login-link"> Register</a></button>
+    </div>
+    </div>
 );
   
 }
-

@@ -8,13 +8,16 @@ body {
 }
 
 .register-container {
-    max-width: 350px;
-    height: 450px;
+   
+    width: 350px;
+    height: 445px;
     margin: 100px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    z-index: 1;
+    margin-left: 405px;
 }
 
 .register-container h1 {
@@ -46,7 +49,7 @@ body {
 .register-container input[type="text"],
 .register-container input[type="email"],
 .register-container input[type="password"] {
-    width: 80%;
+    width: 85%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -104,4 +107,95 @@ body {
 
 .form-button{
    height: 35px;
+}
+
+.welcome-container1 {
+    transform: translateX(-50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    width: 460px;
+    height: 535px;
+    background-color: #ccc;
+     margin-top: 49px;
+     border-radius: 8px;
+     z-index: -1;
+     margin-right: 50px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     background-color:rgb(119, 63, 129) ;
+    margin-right: 300px;
+}
+
+.welcome-container1 h1 {
+    color: rgb(249, 243, 250);
+    margin-bottom: 30px;
+}
+
+.welcome-container1 p {
+    font-size: 14px;
+    color: #faf7f7;
+   margin-bottom: 30px;
+}
+
+
+.login-button a {
+    padding: 10px;
+    background-color: rgb(176, 172, 177);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    border: white;
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    margin-bottom: 50px;
+    text-decoration: none;
+}
+
+.login-button:hover {
+    opacity: 0.95;
+}
+.welcome-container1,
+.regsiter-container{
+    
+    justify-content: center;
+}
+@media (max-width: 768px) {
+    .register-container,
+    .welcome-container1 {
+        margin: 10px auto;
+        width: 95%;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    .form-input-1 {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container,
+    .welcome-container1 {
+        width: 100%; 
+    }
+
+    .register-container h1,
+    .welcome-container1 h1 {
+        font-size: 20px; 
+    }
+
+    .welcome-container1 p {
+        font-size: 12px; 
+    }
+
+    .register-container button,
+    .login-button a {
+        font-size: 14px;
+    }
 }
