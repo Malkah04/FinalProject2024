@@ -50,6 +50,7 @@ const Header = () => {
   <Link to="/cart" className="header-nav-link" onClick={closeMenus}>Cart</Link>
   <Link to="/login" className="header-nav-link" onClick={closeMenus}>Login</Link>
   <Link to="/register" className="header-nav-link" onClick={closeMenus}>Sign up</Link>
+  <Link to="/Profile" className="header-nav-link" onClick={closeMenus}>Profile</Link>
 </nav>
 
 {isMenuOpen && (

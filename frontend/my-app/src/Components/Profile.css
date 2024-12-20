@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.profile-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(119, 63, 129);
+}
+
+.profile-view {
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.profile-info strong {
+    color: rgb(119, 63, 129);
+}
+
+.profile-form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: rgb(119, 63, 129);
+}
+
+.profile-form .form-group {
+    margin-bottom: 15px;
+}
+
+.profile-form label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(119, 63, 129);
+}
+
+.profile-form input,
+.profile-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.profile-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(119, 63, 129);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.profile-form button:hover {
+    opacity: 0.95;
+}
+
+.profile-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.profile-links a {
+    color: rgb(119, 63, 129);
+    text-decoration: none;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.profile-links a:hover {
+    text-decoration: underline;
+}
