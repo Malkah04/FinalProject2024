@@ -1,124 +1,171 @@
-import React from 'react'
-import { useState } from 'react'
-import './Addproduct.css'
+import React, { useState, useEffect } from 'react';
+import './ALLproduct.css';
 
-export default function Addproduct() {
-   const [name, setName] = useState('')
-   const [price, setPrice] = useState()
-   const [description, setDescription] = useState('')
-   const [image, setImage] = useState('')
-   const [quantity, setQuantity] = useState('1')
-   const [category, setCategory] = useState('')
-   const [error, setError] = useState(null)
-   const [done, setDone] =   useState()
+export default function ALLproduct() {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [errors, setErrors] = useState(null);
+  const [category, setCategory] = useState("all");
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [detail, setDetail] = useState(null);
+  const [id, setId] = useState(null);
+  const [visiable, setvisiable] = useState(false);
 
-   const handleAddProduct = async (e)=>{
-    e.preventDefault();
-    try{
-        const response = await fetch('http://localhost:7000/addproduct', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            productName:name,
-            productPrice:parseInt(price),
-            productDescription:description,
-            productImage:image,
-           productQuantity:parseInt(quantity),
-           productCategory:category
-          })
-        })
-        if(!response.ok){
-          throw new Error('Failed to add product')
+  useEffect(() => {
+    fetch('http://localhost:7000/products', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
         }
-        const data=await response.json()
-        setDone(data.message)
-        setError(null)
-        setName('');
-      setPrice(0);
-      setDescription('');
-      setImage(null);
-      setQuantity(1);
-        
+        return response.json();
+      })
+      .then((data) => {
+        const productsArray = Array.isArray(data) ? data : [data];
+        setProducts(productsArray);
+        setErrors(null);
+      })
+      .catch((error) => setErrors(error.message));
+  }, []);
+
+  const handleFilter = () => {
+    const min = parseFloat(minPrice) || 0;
+    const max = parseFloat(maxPrice) || Infinity;
+
+    const filtered = products.filter((product) => {
+      const matchesCategory = category === "all" || product.productCategory === category;
+      const matchesPrice = product.productPrice >= min && product.productPrice <= max;
+      const matchesSearchQuery = product.productName.toLowerCase().includes(searchQuery.toLowerCase());
+
+      return matchesCategory && matchesPrice && matchesSearchQuery;
+    });
+
+    setFilteredProducts(filtered);
+  };
+
+  let display = filteredProducts.length > 0 ? filteredProducts : products;
+
+  const details = (id) => {
+    setId(id);
+    setvisiable(true);
+  };
+
+  const closeDetails = () => {
+    setvisiable(false); 
+  };
+
+  useEffect(() => {
+    if (id) {
+      const pro = products.find((product) => product._id === id);
+      setDetail(pro);
     }
-    catch(err) {
-      setError('Failed to add product')
-      setDone(null)
+  }, [id]);
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleFilter();
     }
-   }
+  };
 
   return (
-    <>
-     <h1>Add Product</h1>
-      <form className="fr" onSubmit={handleAddProduct}>
-        <label>
-          <div style={{ display: 'flex' }}>
-            <h4 style={{ marginRight: '60px' }}>Product Name:</h4>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Product Name"
-              required
-            />
-          </div>
-        </label>
+    <div className='allproducts'>
+      <div className='allproducts2'>
+        <h1>All Products</h1>
 
-        <label>
-          <div style={{ display: 'flex' }}>
-            <h4 style={{ marginRight: '58px' }}>Product Image:</h4>
-            <input
-              type="text"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              required
-            />
-          </div>
-        </label>
+        <div className="search-container">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleKeyPress}
+            placeholder="Search for a product"
+          />
+        </div>
 
-        <label>
-          <div style={{ display: 'flex' }}>
-            <h4 style={{ marginRight: '20px' }}>Product Description:</h4>
-            <input
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            />
-          </div>
-        </label>
-
-        <label>
-          <div style={{ display: 'flex' }}>
-            <h4 style={{ marginRight: '68px' }}>Product Price:</h4>
-            <input
-              type="number"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              required
-            />
-          </div>
-        </label>
-
-        <label>
-          <div style={{ display: 'flex' }}>
-            <h4 style={{ marginRight: '32px' }}>Product Category:</h4>
-            <input
-              type="text"
+        <div className='filters'>
+          <div className="filter-item">
+            <label>Category:</label>
+            <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              required
+            >
+              <option value="all">All</option>
+              <option value="Backpack">Backpack Bags</option>
+              <option value="laptop">Laptop Bags</option>
+              <option value="tote">Tote Bags</option>
+            </select>
+          </div>
+          
+          <div className='filter-item'>
+            <label>Min Price:</label>
+            <input
+              className="price-input"
+              type="number"
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+              placeholder="0"
             />
           </div>
-        </label>
 
-        <button type="submit">Add Product</button>
-      </form>
+          <div className='filter-item'>
+            <label>Max Price:</label>
+            <input
+              className="price-input"
+              type="number"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
+              placeholder="1000"
+            />
+          </div>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {done && <p style={{ color: 'green' }}>{done}</p>}
+          <button className='Buton' onClick={handleFilter}>
+            Apply Filter
+          </button>
+        </div>
 
-    </>
-  )
+        {errors ? (
+          <p>Error: {errors}</p>
+        ) : (
+          <div className='d' style={{ display: "flex", textAlign: "center", alignItems: "center" }}>
+            {display.length > 0 ? (
+              display.map((product) => (
+                <div className='filtered_products s' key={product.id}>
+                  <img
+                    src={product.productImage}
+                    alt={product.productName}
+                  />
+                  <p className="plus" onClick={() => details(product._id)}>+</p>
+                  <h3>{product.productName}</h3>
+                  <p className='price'>{product.productPrice}LE</p>
+                </div>
+              ))
+            ) : (
+              <p>No products found</p>
+            )}
+          </div>
+        )}
+
+        {visiable && (
+          <div className="detail">
+            {id && detail && (
+              <div>
+                <div className='close'>
+                  <i onClick={() => closeDetails()} className="fa-solid fa-x"></i>
+                </div>
+                <h2>{detail.productName}</h2>
+                <img src={detail.productImage} alt={detail.productName} />
+                <p>{detail.productDescription}</p>
+                <p className='detial-price'>Price: {detail.productPrice} LE</p>
+                <button className='bt'>Add to cart</button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
