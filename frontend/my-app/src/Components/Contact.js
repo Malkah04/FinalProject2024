@@ -19,7 +19,7 @@ const Contact = () => {
                 <div className="input-box">
                     <textarea name="" id="" className="field mess" placeholder="Enter your message" ></textarea>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" className='button-contact'>Submit</button>
             </form>
         </section>
   )

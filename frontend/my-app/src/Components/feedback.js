@@ -15,7 +15,7 @@ const feedback = () => {
             <div className="input-box-feed">
                 <textarea name="" id="" className="field-feed mess" placeholder="feedback" required ></textarea>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" className='button-feed'>Submit</button>
         </form>
     </section>
   )

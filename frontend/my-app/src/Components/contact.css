@@ -54,7 +54,7 @@
     height: 100px;
     resize: none;
 }
-button{
+.button-contact{
     width:100% ;
     height: 30px;
     background:rgb(119, 63, 129);
@@ -65,7 +65,7 @@ button{
     cursor: pointer;
     font-size: 15px;
 }
-button:hover{
+.button-contact:hover{
     background-color:rgb(157, 75, 172);
     font-size: 16px;
 } 
