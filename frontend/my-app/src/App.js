@@ -18,7 +18,7 @@ import Laptop from './Components/Laptop';
 import Tote from './Components/Tote';
 import Footer from './Components/Footer';
 import Header1 from './Components/Header1';
-import ForgetPassword from './Components/ForgetPassword';
+import Addproduct from './Components/Addproduct';
 
 
 function App() {
@@ -35,13 +35,13 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path="/forgetpassword" element={<ForgetPassword />} />
-        <Route path="/Backpack" element={<Backpack />} />
+        <Route path="/back" element={<Backpack />} />
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/tote" element={<Tote />} />
         <Route path='home' element={<Home />} />
         <Route path='/allproduct' element={<ALLproduct/>} />
         <Route path='/ourstory' element={<Ourstory/>} />
+        <Route path='/add' element={<Addproduct/>}/>
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
 

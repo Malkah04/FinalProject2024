@@ -1,10 +1,13 @@
+body{
+    background-color: #ffffff;
+}
 .prod{
     width: 300px;
     height: 550px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 4px rgb(57 49 49 / 94%);
     margin: 20px 20px;
     border-radius: 15px;
-    border: 3px solid #ccc;
+    border: 3px solid #ffffff;
 
 }
 .prod img{
@@ -14,7 +17,7 @@
 }
 .pl{
     background-color: purple;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     color: white;
     width: 30px;
     height: 30px;
