@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./feedback.css"
-const feedback = () => {
+const Feedback = () => {
+    const [submitted, setSubmitted] = useState(false); 
+  
+    const handleSubmit = (e) => {
+      setSubmitted(true);  
+    };
+
   return (
     <section className="feedback">
-        <form className='form'>
+        {!submitted && <form className='form'>
             <h1>Feedback</h1>
             <input type="text" className="field-feed" placeholder="Subject" required/>
             <div className="input-box-feed">
@@ -15,10 +21,11 @@ const feedback = () => {
             <div className="input-box-feed">
                 <textarea name="" id="" className="field-feed mess" placeholder="feedback" required ></textarea>
             </div>
-            <button type="submit">Submit</button>
-        </form>
+            <button type="submit" onClick={handleSubmit}>Submit</button>
+        </form>}
+        {submitted && <div className="mas">Thank You For Your Feedback</div>}
     </section>
-  )
+  );
 }
 
-export default feedback
+export default Feedback;

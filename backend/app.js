@@ -33,6 +33,7 @@ app.post('/register', async (req, res) => {
          password=await bcrypt.hash(password,salt)
 
          const user = new User({ first, second, email, password });
+         user.coins = 1000;
          await user.save();
         res.status(200).json("user added successfully ")
       }
@@ -161,6 +162,7 @@ app.post('/adduser', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     userParam.password = await bcrypt.hash(userParam.password, salt);
     user.password = userParam.password;
+    user.coins = 1000;
 
     await user.save();
     res.send("user added successfully ")
