@@ -1,6 +1,7 @@
 import './App.css';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import Profile from './Components/Profile';
 import{
   BrowserRouter as Router,
   Route,
@@ -30,13 +31,14 @@ function App() {
        <Header1/>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/Profile"element={<Profile/>}/>
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} /> 
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path="/back" element={<Backpack />} />
+        <Route path="/Backpack" element={<Backpack />} />
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/tote" element={<Tote />} />
         <Route path='home' element={<Home />} />
