@@ -96,7 +96,7 @@ const Tote = () => {
           <h2>{detail.productName}</h2>
           <img src={detail.productImage} alt={detail.productName} />
           <p>{detail.productDescription}</p>
-          <p>Price: {detail.productPrice} LE</p>
+          <p className='detial-price'>Price: {detail.productPrice} LE</p>
           <button className='bt'>Add to cart</button>
         
         </div>

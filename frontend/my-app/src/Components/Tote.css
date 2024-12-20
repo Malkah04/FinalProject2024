@@ -12,6 +12,9 @@
     height: 300px;
     margin: 10px;
 }
+.detial-price{
+    color: purple;
+}
 .pl{
     background-color: purple;
     border-radius: 50%;

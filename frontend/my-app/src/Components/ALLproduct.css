@@ -54,6 +54,9 @@
     justify-content: center;
     
 }
+.detial-price{
+    color: purple;
+}
 .min-price {
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
@@ -85,33 +88,6 @@
     margin: 20px 10px 20px 10px;
     font-size: 15px;
 }
-
-input :hover {
-    background-color: rgb(119, 63, 129);
-    border-color: rgb(119, 63, 129);
-}
-.Buton {
-    width: 30%;
-    height: 30px;
-    background: rgb(119, 63, 129);
-    font-family: 'Times New Roman', Times, serif;
-    border-radius: 6px;
-    margin-top: 0px;
-    margin-left: 35%;
-    color: #fff;
-    cursor: pointer;
-    font-size: 15px;
-    margin-bottom: 10px;
-
-
-}
-
-.Buton:hover {
-    background-color: rgb(157, 75, 172);
-    font-size: 16px;
-}
-
-
 .filtered_products {
 
     justify-content: center;
@@ -182,3 +158,105 @@ input :hover {
 .bt:hover{
     opacity: 8;
 }
+
+.Buton {
+    width: 10%;
+    height: 30px;
+    background: rgb(119, 63, 129);
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 20px;
+    margin-top: 0px;
+    margin-right: 55%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    
+}
+.Buton:hover {
+    background-color: rgb(157, 75, 172);
+    font-size: 16px;
+}
+.filters {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .filters select {
+    appearance: none; 
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #fff no-repeat right 10px center;
+    background-size: 12px;
+  }
+  .filters select:hover {
+    background-color: rgb(247, 243, 248);
+}
+
+  .filters .price-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px; 
+    width: 80px; 
+    text-align: center;
+  }
+  .filters .price-input:hover {
+    background-color: rgb(247, 243, 248);
+}  
+  .search-container {
+    position: absolute;
+    top: 150px; 
+    right: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    z-index: 10; 
+  }
+  
+  .search-container input {
+    width: 200px; 
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-container button {
+    padding: 10px;
+    background-color: rgb(119, 63, 129);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+   
+
+@media (max-width: 800px) {
+    .Buton {
+        width: auto; 
+        height: 25px; 
+        font-size: 9px; 
+        padding: 5px 10px; 
+        margin: 5px; 
+    }
+
+
+    .filters {
+        display: flex;
+        justify-content: space-between; 
+        gap: 5px; 
+    }
+
+    .filters select,
+    .filters .price-input {
+        width: auto; 
+        font-size: 12px; 
+        padding: 5px; 
+        margin: 5px; 
+    }
+
+}
+
