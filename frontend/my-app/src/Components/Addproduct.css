@@ -1,0 +1,18 @@
+.fr{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.fr label{
+    margin-bottom: 20px;
+}
+.fr input{
+    width: 450px;
+  height: 30px;
+}
+.fr button{
+    width: 150px;
+}

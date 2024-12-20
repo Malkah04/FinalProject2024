@@ -12,6 +12,7 @@ const Tote = () => {
          const [detail, setDetail] = useState(null);
           const [id, setId] = useState(null)
           const [visiable, setvisiable] = useState(false)
+          const [num, setnum] = useState(1)
     
     useEffect(() => {
       fetch('http://localhost:7000/products')
@@ -44,11 +45,33 @@ const Tote = () => {
         }, [id]);
     let display = filteredProducts.length > 0 ? filteredProducts : products;
 
+    function add(id){
+      let pro=products.find((product) => product._id === id);
+      if (!pro) {
+        return;
+      }
+      if(pro.productQuantity>num){
+        setnum(num+1);
+      }
+    }
+    function minus(){
+      if(num>1){
+        setnum(num-1);
+      }
+    }
   
   
   return (
     <div>
       <h1>Tote Bags</h1>
+      <p className='text'>
+      Chic Bags presents a stunning range of tote bags that blend elegance with everyday utility.
+       Perfect for work, shopping, or casual outings, 
+       our totes are designed to hold everything you need while making a fashion statement.
+        Crafted with high-quality materials and timeless designs,
+         these spacious and versatile bags are the ultimate accessory for the modern lifestyle. 
+      Carry your essentials in style with Chic Bags' tote collection!
+      </p>
     <div >
       <div className="in">
       <label className='min-price '>
@@ -76,7 +99,7 @@ const Tote = () => {
         Apply Filter
       </button>
     </div>
-    <div className='product'>
+    <div className='product d'>
     {display
       .filter((product) => product.productCategory === 'tote')
       .map((product) => (
@@ -96,6 +119,11 @@ const Tote = () => {
           <h2>{detail.productName}</h2>
           <img src={detail.productImage} alt={detail.productName} />
           <p>{detail.productDescription}</p>
+          <div className='count'>
+                <span className='p' onClick={() => add(detail._id)}>+</span>
+                <span className='n'>{num}</span>
+                <span className='m' onClick={() => minus()}>-</span>
+              </div>
           <p>Price: {detail.productPrice} LE</p>
           <button className='bt'>Add to cart</button>
         

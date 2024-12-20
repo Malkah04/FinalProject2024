@@ -80,7 +80,13 @@ export default function Home() {
                  <Link to="/ourstory">
                         <span style={{ textDecoration: "underline" }}>Read More</span>
                  </Link>
+                 <Link to='/add'>
+                 <div>
+                  Add a New Item
+                 </div>
+                 </Link>
                  
+                 <button>Add Product</button>
             </div>
         </div>
   )

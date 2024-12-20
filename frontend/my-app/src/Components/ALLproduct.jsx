@@ -11,6 +11,7 @@ export default function ALLproduct() {
   const [detail, setDetail] = useState(null);
   const [id, setId] = useState(null)
   const [visiable, setvisiable] = useState(false)
+  const [num, setnum] = useState(1)
 
 
   useEffect(() => {
@@ -46,6 +47,7 @@ export default function ALLproduct() {
   const details = (id) => {
     setId(id);
     setvisiable(true);
+    setnum(1);
   };
   const closeDetails = () => {
     setvisiable(false); 
@@ -57,13 +59,37 @@ export default function ALLproduct() {
     }
   }, [id]);
 
+  function add(id){
+    let pro=products.find((product) => product._id === id);
+    if (!pro) {
+      return;
+    }
+    if(pro.productQuantity>num){
+      setnum(num+1);
+    }
+  }
+  function minus(){
+    if(num>1){
+      setnum(num-1);
+    }
+  }
+
+
+  
+
   
 
   return (
     <div className='allproducts'>
      <div className='allproducts2'>
     <h1>All Products</h1>
-
+     <p  className='text'>Welcome to Chic Bags' All Products collection, where style meets versatility. 
+      Explore our wide range of bags crafted for every occasion,
+       from chic totes to functional backpacks and elegant laptop bags. 
+       Each piece combines premium materials with thoughtful designs to meet the needs of your modern 
+       lifestyle. Whether you're heading to work, traveling, or enjoying a casual day out,
+        our collection offers something special for everyone.
+       Discover the perfect bag to complement your look and elevate your everyday essentials.</p>
     <div  className='in'>
         <label className='min-price '>
           Min Price:
@@ -108,7 +134,7 @@ export default function ALLproduct() {
               />
               <p className="plus" onClick={() => details(product._id)}>+</p>
               <h3>{product.productName}</h3>
-              <p>{product.productPrice}LE</p>
+              <p className='price' style={{color:' #9f0f5dd6;'}}>{product.productPrice}LE</p>
            
 
             </div>
@@ -128,8 +154,13 @@ export default function ALLproduct() {
               <img src={detail.productImage} alt={detail.productName} />
               <p>{detail.productDescription}</p>
               <p>Price: {detail.productPrice} LE</p>
+              <div className='count'>
+                <span className='p' onClick={() => add(detail._id)}>+</span>
+                <span className='n'>{num}</span>
+                <span className='m' onClick={() => minus()}>-</span>
+              </div>
               <button className='bt'>Add to cart</button>
-            
+
             </div>
           )}
         </div>):
