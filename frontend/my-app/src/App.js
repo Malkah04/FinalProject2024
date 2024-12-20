@@ -18,6 +18,7 @@ import Laptop from './Components/Laptop';
 import Tote from './Components/Tote';
 import Footer from './Components/Footer';
 import Header1 from './Components/Header1';
+import ForgetPassword from './Components/ForgetPassword';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/Backpack" element={<Backpack />} />
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/tote" element={<Tote />} />
