@@ -2,6 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import './ALLproduct.css';
 
+
 export default function ALLproduct() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -9,8 +10,9 @@ export default function ALLproduct() {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [detail, setDetail] = useState(null);
-  const [id, setId] = useState(null)
-  const [visiable, setvisiable] = useState(false)
+  const [id, setId] = useState(null);
+  const [visiable, setvisiable] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
@@ -56,6 +58,37 @@ export default function ALLproduct() {
       setDetail(pro);
     }
   }, [id]);
+
+
+
+  const addToCart = async (productId, productQuantity) => {
+    setLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:7000/products', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // userId,
+          productId,
+          productQuantity, 
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Cart updated:", data.cart);
+      } else {
+        console.error("Failed to add to cart");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   
 
@@ -128,8 +161,13 @@ export default function ALLproduct() {
               <img src={detail.productImage} alt={detail.productName} />
               <p>{detail.productDescription}</p>
               <p>Price: {detail.productPrice} LE</p>
-              <button className='bt'>Add to cart</button>
-            
+              <button
+              className="bt"
+              onClick={() => addToCart(ALLproduct._id, 1, ALLproduct.price)}
+              disabled={loading}
+            >
+              {loading ? 'Adding...' : 'Add to Cart'}
+            </button>
             </div>
           )}
         </div>):

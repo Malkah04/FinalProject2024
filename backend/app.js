@@ -5,6 +5,7 @@ const bcrypt= require('bcrypt');
 const User=require('./models/user.model')
 const Product=require('./models/Product.model')
 const Cart=require('./models/cart.model')
+
 const mongouri ="mongodb+srv://malk04:Mx0wSJBask92oSYB@cluster0.pmz7i.mongodb.net/"
 
 

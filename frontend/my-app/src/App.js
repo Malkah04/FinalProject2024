@@ -18,6 +18,7 @@ import Laptop from './Components/Laptop';
 import Tote from './Components/Tote';
 import Footer from './Components/Footer';
 import Header1 from './Components/Header1';
+import Cart from './Components/Cart';
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
         <Route path="/tote" element={<Tote />} />
         <Route path='home' element={<Home />} />
         <Route path='/allproduct' element={<ALLproduct/>} />
+        <Route path='/cart' element={<Cart/>} />
+
         <Route path='/ourstory' element={<Ourstory/>} />
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
