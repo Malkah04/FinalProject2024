@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./Cart.css"
 
 function Cart() {
   const [cart, setCart] = useState({ cartItems: [] });
@@ -61,30 +62,35 @@ localStorage.setItem('cart', JSON.stringify(Mycart));
   }; 
 
   return (
-    <div>
-      <h2>Your Cart Contains : {cart.totalItems ? cart.totalItems: 0} </h2>
-     
-      <h2>With totalPrice : {cart.totalPrice ? cart.totalPrice: 0} </h2>
+    <div className='cart-container'> 
+    
       
       <ul>
 
         {cart.cartItems&& cart.cartItems.map((item) => (
           <li key={item.productId}>
-          <div>
+          <div className='cart-product'>
           
          
-          <h2>{item.productName}</h2>
+          {/* <h2>{item.productName}</h2> */}
           <img src={item.productImage} width={"200"}  height={"200"}alt={item.productName} />
+          <div className='cart-button'>
           <p>{item.productDescription}</p>
           <p>Price: {item.productPrice} LE</p>
-        
+          <button className='btn btn3' onClick={() => removeFromCart(item)}>Remove</button>
+          </div>
         </div>
-           <button onClick={() => removeFromCart(item)}>Remove</button>
+          
            
           </li>
           
          ))} 
       </ul>
+      <div className='cart-total'>
+      <h2>Your Cart Contains : {cart.totalItems ? cart.totalItems: 0} </h2>
+     
+     <h2>With totalPrice : {cart.totalPrice ? cart.totalPrice: 0} </h2>
+     </div>
     </div>
   );
 }
