@@ -55,6 +55,16 @@ app.post('/login', async (req, res) => {
     res.status(500).json({error: err.message})
   }
 })
+app.get('/user/:email',async (req, res) => {
+  try{
+    const user=await User.findOne({email : req.params.email})
+    if(!user) return res.status(400).json({error:'user not found'})
+    res.json(user)
+  }
+  catch(err){
+    res.status(500).json({error: err.message})
+  }
+})
 
 
 
