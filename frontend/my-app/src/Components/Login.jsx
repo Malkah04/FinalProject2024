@@ -75,7 +75,8 @@ export default function Login() {
 <div class="welcome-container">
         <h1>Welcome Back!</h1>
         <p>Enter personal details to your employee account.</p>
-        <button class="register-button"> <a href="/register" className="login-link"> Register</a></button>
+        <button class="register-button"> 
+          <Link to="/register" className="login-link">Register</Link></button>
     </div>
     </div>
 );

@@ -19,16 +19,21 @@
 }
 .d :hover{
     cursor: pointer;
-    
+}
+.d img:hover{
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.4); 
+    transform: scale(1.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 .s:hover .plus,
 .s:hover .pls,
-.s:hover .pl{
+.s:hover .pl,
+.s:hover .ppp{
     display: flex;
 }
 .plus{
     background-color: purple;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     color: white;
     width: 30px;
     height: 30px;
@@ -170,6 +175,12 @@
     color: #fff;
     cursor: pointer;
     font-size: 15px;
+    width: 130%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 41px;
     
 }
 .Buton:hover {
@@ -259,4 +270,38 @@
     }
 
 }
+.count{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    color: purple;
+    width: 30%;
+    text-align: center;
+}
+.count .p,
+.count .n,
+.count .m{
+    margin-left: 5px;
+    width: 35px;
+    height: 28px;
+    border: 1px solid #dac5ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    transition: ease 1s;
+}
+.count .m:hover{
+    cursor: pointer;
+    background-color:purple;
+    color: white;
+}
+.count .p:hover{
+    cursor: pointer;
+    background-color:purple;
+    color: white;
+}
+
+
+
 
