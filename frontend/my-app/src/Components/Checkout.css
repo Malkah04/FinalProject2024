@@ -1,0 +1,38 @@
+.parent{
+    display: flex;
+    margin: 30px;
+}
+.parent .left,
+.parent .right{
+    flex: 1;
+}
+.left .email,
+.number{
+    width: 75%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+.left .name{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.name input{
+    width:48% ;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.left .address input{
+    width: 75%;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.country{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+

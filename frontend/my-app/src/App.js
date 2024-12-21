@@ -20,7 +20,8 @@ import Tote from './Components/Tote';
 import Footer from './Components/Footer';
 import Header1 from './Components/Header1';
 import Addproduct from './Components/Addproduct';
-import CartList from './Components/Cart';
+import Cart from './Components/Cart';
+import Checkout from './Components/Checkout';
 
 
 function App() {
@@ -43,9 +44,10 @@ function App() {
         <Route path="/tote" element={<Tote />} />
         <Route path='home' element={<Home />} />
         <Route path='/allproduct' element={<ALLproduct/>} />
-        <Route path='/Car' element={<Cart/>} />
+        <Route path='/cart' element={<Cart/>} />
         <Route path='/ourstory' element={<Ourstory/>} />
         <Route path='/add' element={<Addproduct/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
 

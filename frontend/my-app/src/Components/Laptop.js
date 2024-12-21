@@ -121,7 +121,7 @@ Mycart.totalPrice = parseInt(Mycart.totalPrice) +parseInt (detail.productPrice);
         </label>
         <br></br>
         </div> 
-        <button className='Buton' onClick={handleFilter} >
+        <button className='Buton' style={{width:"10%"}} onClick={handleFilter} >
           Apply Filter
         </button>
         
