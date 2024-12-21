@@ -71,6 +71,37 @@ export default function ALLproduct() {
     }
   };
 
+  const AddToCart = (detail) => {
+    const EmptyCart = {
+      cartItems: [
+        
+
+      ],
+
+      
+      totalItems: 0,
+      totalPrice: 0
+    };
+   
+   
+    let loccart = localStorage.getItem('cart');
+
+const Mycart = JSON.parse (loccart) ? JSON.parse(loccart) : EmptyCart;
+
+
+Mycart.cartItems.push(detail);
+Mycart.totalItems +=1;
+Mycart.totalPrice = parseInt(Mycart.totalPrice) +parseInt (detail.productPrice);
+
+    
+    alert(`Added ${detail.productName} to the cart`) 
+    
+    
+    localStorage.setItem('cart', JSON.stringify(Mycart));
+   
+
+  }; 
+
   return (
     <div className='allproducts'>
       <div className='allproducts2'>
@@ -160,7 +191,7 @@ export default function ALLproduct() {
                 <img src={detail.productImage} alt={detail.productName} />
                 <p>{detail.productDescription}</p>
                 <p className='detial-price'>Price: {detail.productPrice} LE</p>
-                <button className='bt'>Add to cart</button>
+                <button className='bt'    onClick={() => AddToCart(detail)}>Add to cart</button>
               </div>
             )}
           </div>
