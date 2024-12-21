@@ -51,7 +51,7 @@ export default function Home() {
             (() => {
                  
                 return products.map((product) => {
-                    if (cnt < 10) {
+                    if (cnt < 20) {
                         cnt++;
                         return (
                             <div key={product._id}>

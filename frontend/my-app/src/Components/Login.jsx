@@ -21,6 +21,7 @@ export default function Login() {
           console.log("Success:", data);
 
           // Handle successful login here
+          <Link to='/home'></Link>
           
         })
         .catch((error) => {
